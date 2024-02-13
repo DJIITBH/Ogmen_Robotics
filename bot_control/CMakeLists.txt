@@ -12,6 +12,8 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
+#ament_python_install_package(bot_control)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -24,13 +26,15 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+set(EXAMPLES_DIR src)
+#install(
+#  DIRECTORY src
+#  DESTINATION lib/${PROJECT_NAME}
+#)
 install(
-  DIRECTORY src
-  DESTINATION share/${PROJECT_NAME}
-)
-install(
-	PROGRAMS src/reading_laser.py
-	DESTINATION share/${PROJECT_NAME}
+	PROGRAMS 
+	${EXAMPLES_DIR}/reading_laser.py
+	DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_package()
